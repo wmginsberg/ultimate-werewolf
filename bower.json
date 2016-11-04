@@ -18,7 +18,8 @@
     "polymer": "Polymer/polymer#^1.6.0",
     "paper-button": "PolymerElements/paper-button#^1.0.14",
     "countdown-timer": "*",
-    "count-down": "dg-count-down-timer#^1.0.1"
+    "count-down": "dg-count-down-timer#^1.0.1",
+    "polymerfire": "firebase/polymerfire#^0.10.2"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

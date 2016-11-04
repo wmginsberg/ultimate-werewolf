@@ -14,7 +14,8 @@ a grid of char-cards
 <template>
   <div class="button-container">
     <template is="dom-repeat" items="{{characters.characters}}">
-      <char-card index="{{item.index}}" has-action="{{item.hasAction}}" instruction1="{{item.instruction}}" instruction2="{{item.instruction2}}" char-name="{{item.charName}}"></char-card>
+      <char-card index="{{item.index}}" has-action="{{item.hasAction}}" instruction1="{{item.instruction}}" instruction2="{{item.instruction2}}" char-name="{{item.charName}}"> 
+      </char-card>
     </template>
   </div>
 
@@ -22,7 +23,8 @@ a grid of char-cards
         auto
         url="characters.json"
         handle-as="json"
-        last-response="{{characters}}">
+        last-response="{{characters}}"
+        on-response="updateDatabase">
   </iron-ajax>
   <style>
     .button-container {
@@ -61,6 +63,10 @@ a grid of char-cards
       },
       ready: function() {
         console.log("ready");
+      },
+      updateDatabase: function() {
+        var charRef = firebase.app('ultimate-werewolf').database().ref('/').push(this.characters);
+        console.log(charRef.key);
       },
       incrementCounter: function() {
         this.count = this.count + 1;

@@ -18,6 +18,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="my-icons.html">
@@ -71,6 +73,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         pattern="/:page"
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
+    <firebase-app 
+      api-key="AIzaSyAcw5B_6QIl_dFVlVQZ1aazweNzUfHEWV0"
+      auth-domain="ultimate-werewolf.firebaseapp.com"
+      database-url="https://ultimate-werewolf.firebaseio.com"
+      messaging-sender-id="896266024670"
+      name="ultimate-werewolf">
+    </firebase-app>
 
     <app-drawer-layout fullbleed>
       <!-- Drawer content -->
