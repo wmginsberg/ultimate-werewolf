@@ -126,9 +126,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _pageChanged: function(page) {
-        // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
-        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+        // load page import on demand.
+        var dic = {'view1':'start','view2':'timer','view3':'play'};
+        if (dic[page]) {
+          this.importHref(
+            this.resolveUrl('my-' + page + '.html'), null, null, true);
+        } else {
+          this.page = '404';
+          this.importHref(
+            this.resolveUrl('my-view404.html'), null, null, true);
+        }
       },
 
       _showPage404: function() {
