@@ -1,0 +1,43 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!--
+`instruction-card`
+a card that pops up with with an instruction for get setup
+
+@demo demo/index.html 
+-->
+
+<dom-module id="instruction-card">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+    <p>[[instruction1]]</p>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'instruction-card',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'instruction-card',
+        },
+        instruction1: {
+          type: String,
+          value: ''
+        },
+        instruction2: {
+          type: String,
+          value: ''
+        }
+      },
+
+    });
+  </script>
+</dom-module>
