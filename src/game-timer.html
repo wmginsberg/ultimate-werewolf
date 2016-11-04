@@ -1,0 +1,56 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!--
+`game-timer`
+this is a timer for the game
+
+@demo demo/index.html 
+-->
+
+<dom-module id="game-timer">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'game-timer',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'game-timer',
+        },
+      },
+
+      startTimer: function(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = duration;
+            }
+        }, 1000);
+      },
+      ready: function() {
+        var fiveMinutes = 60 * 5,
+        display = document.querySelector('#time');
+        startTimer(fiveMinutes, display);
+      }
+
+    });
+  </script>
+</dom-module>

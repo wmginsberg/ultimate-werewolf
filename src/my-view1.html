@@ -9,6 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="char-card-grid.html">
 
@@ -17,14 +19,40 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
-
         padding: 10px;
+      }
+      .button-panel {
+        width: 360px;
+        background: gray;
+        overflow-y: auto;
+        padding: 10px;
+      }
+      paper-button {
+        width: 100px;
+        padding: auto;
+        background-color: white;
+        float: left;
+        margin: 10px;
+      }
+      #play {
+        width: 160px;
+      }
+      paper-icon-button {
+        --iron-icon-fill-color: white;
+        margin: 10px;
+        padding: auto;
+        float: right;
       }
     </style>
 
     <h1>View One</h1>
 
     <char-card-grid></char-card-grid>
+    <div class="button-panel">
+      <paper-button id="timer">TIMER</paper-button>
+      <paper-button id="play">PLAY</paper-button>
+      <paper-icon-button id="settings" icon="settings"></paper-button>
+    </div>
 
   </template>
 
