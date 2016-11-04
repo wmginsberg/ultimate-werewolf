@@ -1,0 +1,106 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="char-card.html">
+
+<!--
+`char-card-grid`
+a grid of char-cards
+
+@demo demo/index.html 
+-->
+
+<dom-module id="char-card-grid">
+
+<template>
+  <div class="button-container">
+    <template is="dom-repeat" items="{{characters}}">
+      <char-card char-name="{{item.charName}}"></char-card>
+    </template>
+  </div>
+
+  <style>
+    .button-container {
+        width: 360px;
+        background: gray;
+        overflow-y: auto;
+        padding: 10px;
+    }
+      :host {
+        display: block;
+        --background-color: blue;
+        --color: yellow;
+      }
+      paper-button {
+        width: 100px;
+        height: 100px;
+        padding: auto;
+        background-color: var(--background-color);
+        float: left;
+        margin: 10px;
+      }
+      h4 {
+        text-align: center;
+        margin-top: auto;
+        margin-bottom: auto;
+        vertical-align: center;
+        color: var(--color);
+        font-size: 12px;
+        font: Arial, sans-serif;
+      }
+  </style>
+</template>
+
+  <script>
+    Polymer({
+
+      is: 'char-card-grid',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'char-card-grid',
+        },
+        count: {
+          type: Number,
+          value: 0,
+          notify: true
+        },
+        characters: {
+          type: Array,
+          value: [
+            {charName: 'Werewolf', index: '0'},
+            {charName: 'Werewolf', index: '1'},
+            {charName: 'Mason', index: '2'},
+            {charName: 'Mason', index: '3'},
+            {charName: 'Seer', index: '4'},
+            {charName: 'Troublemaker', index: '5'},
+            {charName: 'Minion', index: '6'},
+            {charName: 'Drunk', index: '7'},
+            {charName: 'Villager', index: '8'},
+            {charName: 'Villager', index: '9'},
+            {charName: 'Villager', index: '10'},
+            {charName: 'Insomniac', index: '11'}
+          ]
+        }
+      },
+      ready: function() {
+        console.log("ready");
+        this.characters = [
+            {charName: 'Werewolf', index: '0'},
+            {charName: 'Werewolf', index: '1'},
+            {charName: 'Mason', index: '2'},
+            {charName: 'Mason', index: '3'},
+            {charName: 'Seer', index: '4'},
+            {charName: 'Troublemaker', index: '5'},
+            {charName: 'Minion', index: '6'},
+            {charName: 'Drunk', index: '7'},
+            {charName: 'Villager', index: '8'},
+            {charName: 'Villager', index: '9'},
+            {charName: 'Villager', index: '10'},
+            {charName: 'Insomniac', index: '11'}
+        ];
+       // window.addEventListener('WebComponentsReady', function(){ document.querySelector('char-card').item = item1; });
+      }
+
+    });
+  </script>
+</dom-module>

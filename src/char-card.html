@@ -1,0 +1,91 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<!--
+`char-card`
+a card to represent a character type
+
+@demo demo/index.html 
+-->
+
+<dom-module id="char-card">
+  <template>
+    <style>
+      :host {
+        display: block;
+        --background-color: blue;
+        --color: yellow;
+      }
+      paper-button {
+        width: 100px;
+        height: 100px;
+        padding: auto;
+        background-color: var(--background-color);
+        float: left;
+        margin: 10px;
+      }
+      h4 {
+        text-align: center;
+        margin-top: auto;
+        margin-bottom: auto;
+        vertical-align: center;
+        color: var(--color);
+        font-size: 12px;
+        font: Arial, sans-serif;
+      }
+    </style>
+
+    <paper-button on-tap="changeActivation">
+      <h4>[[charName]]</h4>
+    </paper-button>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'char-card',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'char-card',
+        },
+        charName: {
+          type: String,
+          value: 'My Character',
+          notify: true,
+          reflect: true
+        },
+        isActive: {
+          type: Boolean,
+          value: true,
+          notify: true
+        }
+      },
+      changeActivation: function() {
+        console.log("activation changed for " + this.charName);
+        if (this.isActive) {
+          this.isActive = false;
+        } else {
+          this.isActive = true;
+        }
+        this.swapColors();
+      },
+      swapColors: function() {
+        if (this.isActive) {
+          this.customStyle['--color'] = 'yellow';
+          this.customStyle['--background-color'] = 'blue';
+          Polymer.updateStyles();
+        } else {
+          this.customStyle['--color'] = 'blue';
+          this.customStyle['--background-color'] = 'yellow';
+          Polymer.updateStyles();          
+        }
+      },
+      _charNameChanged: function(charName) {
+        this.charName = charName;
+      }
+
+    });
+  </script>
+</dom-module>
