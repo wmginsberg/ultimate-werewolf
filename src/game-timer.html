@@ -14,7 +14,7 @@ this is a timer for the game
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
+    <h2> [[time]]</h2>
   </template>
 
   <script>
@@ -23,14 +23,18 @@ this is a timer for the game
       is: 'game-timer',
 
       properties: {
-        prop1: {
+        time: {
           type: String,
-          value: 'game-timer',
+          value: '00:00',
+          notify: true
         },
       },
 
-      startTimer: function(duration, display) {
+      startTimer: function(duration) {
         var timer = duration, minutes, seconds;
+        console.log(timer);
+        console.log(minutes);
+        console.log(seconds);
         setInterval(function () {
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
@@ -38,7 +42,7 @@ this is a timer for the game
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
 
-            display.textContent = minutes + ":" + seconds;
+            this.time = minutes + ":" + seconds;
 
             if (--timer < 0) {
                 timer = duration;
@@ -46,9 +50,9 @@ this is a timer for the game
         }, 1000);
       },
       ready: function() {
-        var fiveMinutes = 60 * 5,
-        display = document.querySelector('#time');
-        startTimer(fiveMinutes, display);
+        console.log("timer starting...");
+        var fiveMinutes = 60 * 5;
+        this.startTimer(fiveMinutes);
       }
 
     });
