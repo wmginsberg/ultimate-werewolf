@@ -1,0 +1,81 @@
+{
+
+  "werewolf": {
+                "charName": "Werewolf", 
+                "instruction":"WEREWOLVES, wake up and look for other Werewolves",
+                "instruction2":"If there is only one Werewolf you may look at a card from the center",
+                "index": "0",
+                "hasAction": "1"
+              },
+  "werewolf2": {
+                "charName": "Werewolf", 
+                "instruction":"WEREWOLVES, wake up and look for other Werewolves",
+                "instruction2":"If there is only one Werewolf you may look at a card from the center",
+                "index": "1",
+                "hasAction": "1"
+              },
+  "mason": {
+                "charName": "Mason", 
+                "instruction":"MASONS, wake up and look for other Masons",
+                "index": "2",
+                "hasAction": "1"
+              },
+  "mason2": {
+                "charName": "Mason", 
+                "instruction":"MASONS, wake up and look for other Masons",
+                "index": "3",
+                "hasAction": "1"
+              },
+  "seer": {
+                "charName": "Seer", 
+                "instruction":"SEER, wake up. You may look at another player's card or two of the center cards.",
+                "index": "4",
+                "hasAction": "1"
+              },
+  "troublemaker": {
+                "charName": "Troublemaker",
+                "instruction":"TROUBLEMAKER, wake up. You may exchange cards between two other players.",
+                "index": "5",
+                "hasAction": "1"
+              },
+  "minion": {
+                "charName": "Minion", 
+                "instruction":"MINION, wake up. Werewolves, stick out your thumb so the Minion can see who you are.",
+                "instruction2":"Werewolves put your thumb away",
+                "index": "6",
+                "hasAction": "1"
+              },
+  "drunk": {
+                "charName": "Drunk",
+                "instruction":"DRUNK, wake up and exchange your card with a card from the center.",
+                "index": "7",
+                "hasAction": "1"
+              },
+  "villager": {
+                "charName": "Villager", 
+                "index": "8",
+                "hasAction": "0"
+              },
+  "villager2": {
+                "charName": "Villager", 
+                "index": "9",
+                "hasAction": "0"
+              },
+  "villager3": {
+                "charName": "Villager", 
+                "index": "10",
+                "hasAction": "0"
+              },
+  "insomniac": {
+                "charName": "Insomniac",
+                "instruction":"INSOMNIAC, wake up and look at your card.", 
+                "index": "11",
+                "hasAction": "1"
+              },
+  "robber": {
+                "charName": "Robber", 
+                "instruction":"ROBBER, wake up. You may exchange your card with another player's card, and then view your new card.",
+                "index": "12",
+                "hasAction": "1"
+              }
+}
