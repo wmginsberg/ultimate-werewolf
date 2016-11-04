@@ -60,6 +60,23 @@ a card to represent a character type
           type: Boolean,
           value: true,
           notify: true
+        },
+        hasAction: {
+          type: Number,
+          value: 1,
+          notify: true
+        },
+        instruction1: {
+          type: String,
+          value: ''
+        },
+        instruction2: {
+          type: String,
+          value: ''
+        },
+        index: {
+          type: Number,
+          value: 0
         }
       },
       changeActivation: function() {
@@ -68,6 +85,7 @@ a card to represent a character type
           this.isActive = false;
         } else {
           this.isActive = true;
+          console.log(this.instruction1);
         }
         this.swapColors();
       },

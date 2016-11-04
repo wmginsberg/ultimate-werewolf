@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="char-card.html">
 
 <!--
@@ -12,11 +13,17 @@ a grid of char-cards
 
 <template>
   <div class="button-container">
-    <template is="dom-repeat" items="{{characters}}">
-      <char-card char-name="{{item.charName}}"></char-card>
+    <template is="dom-repeat" items="{{characters.characters}}">
+      <char-card index="{{item.index}}" has-action="{{item.hasAction}}" instruction1="{{item.instruction}}" instruction2="{{item.instruction2}}" char-name="{{item.charName}}"></char-card>
     </template>
   </div>
 
+  <iron-ajax
+        auto
+        url="characters.json"
+        handle-as="json"
+        last-response="{{characters}}">
+  </iron-ajax>
   <style>
     .button-container {
         width: 360px;
@@ -48,40 +55,12 @@ a grid of char-cards
           notify: true
         },
         characters: {
-          type: Array,
-          value: [
-            {charName: 'Werewolf', index: '0'},
-            {charName: 'Werewolf', index: '1'},
-            {charName: 'Mason', index: '2'},
-            {charName: 'Mason', index: '3'},
-            {charName: 'Seer', index: '4'},
-            {charName: 'Troublemaker', index: '5'},
-            {charName: 'Minion', index: '6'},
-            {charName: 'Drunk', index: '7'},
-            {charName: 'Villager', index: '8'},
-            {charName: 'Villager', index: '9'},
-            {charName: 'Villager', index: '10'},
-            {charName: 'Insomniac', index: '11'}
-          ]
+          type: Object,
+          value: {}
         }
       },
       ready: function() {
         console.log("ready");
-        this.characters = [
-            {charName: 'Werewolf', index: '0'},
-            {charName: 'Werewolf', index: '1'},
-            {charName: 'Mason', index: '2'},
-            {charName: 'Mason', index: '3'},
-            {charName: 'Seer', index: '4'},
-            {charName: 'Troublemaker', index: '5'},
-            {charName: 'Minion', index: '6'},
-            {charName: 'Drunk', index: '7'},
-            {charName: 'Villager', index: '8'},
-            {charName: 'Villager', index: '9'},
-            {charName: 'Villager', index: '10'},
-            {charName: 'Insomniac', index: '11'}
-        ];
-       // window.addEventListener('WebComponentsReady', function(){ document.querySelector('char-card').item = item1; });
       },
       incrementCounter: function() {
         this.count = this.count + 1;
