@@ -14,7 +14,7 @@ a grid of char-cards
 <template>
   <div class="button-container">
     <template is="dom-repeat" items="{{characters.characters}}">
-      <char-card index="{{item.index}}" has-action="{{item.hasAction}}" instruction1="{{item.instruction}}" instruction2="{{item.instruction2}}" char-name="{{item.charName}}"> 
+      <char-card index="{{item.index}}" has-action="{{item.hasAction}}" instruction1="{{item.instruction}}" instruction2="{{item.instruction2}}" push-key="{{this.pushKey}}" char-name="{{item.charName}}"> 
       </char-card>
     </template>
   </div>
@@ -59,13 +59,19 @@ a grid of char-cards
         characters: {
           type: Object,
           value: {}
+        },
+        pushKey: {
+          type: String,
+          value: '',
+          notify: true
         }
       },
       ready: function() {
         console.log("ready");
       },
       updateDatabase: function() {
-        var charRef = firebase.app('ultimate-werewolf').database().ref('/').push(this.characters);
+        var charRef = firebase.app('ultimate-werewolf').database().ref('/').update(this.characters);
+        this.pushKey = charRef;
         console.log(charRef.key);
       },
       incrementCounter: function() {

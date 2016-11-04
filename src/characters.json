@@ -6,6 +6,7 @@
                 "instruction":"WEREWOLVES, wake up and look for other Werewolves",
                 "instruction2":"If there is only one Werewolf you may look at a card from the center",
                 "index": "0",
+                "isActive": "false",
                 "hasAction": "1"
               },
                { "shortName": "werewolf2",
@@ -13,6 +14,7 @@
                 "instruction":"WEREWOLVES, wake up and look for other Werewolves",
                 "instruction2":"If there is only one Werewolf you may look at a card from the center",
                 "index": "1",
+                "isActive": "false",
                 "hasAction": "1"
               },
               { "shortName": "mason",
@@ -20,6 +22,7 @@
                 "instruction":"MASONS, wake up and look for other Masons",
                 "instruction2":"",
                 "index": "2",
+                "isActive": "false",
                 "hasAction": "1"
               },
               { "shortName": "mason2",
@@ -27,6 +30,7 @@
                 "instruction":"MASONS, wake up and look for other Masons",
                 "instruction2":"",
                 "index": "3",
+                "isActive": "false",
                 "hasAction": "1"
               },
               { "shortName": "seer",
@@ -34,6 +38,7 @@
                 "instruction":"SEER, wake up. You may look at another player's card or two of the center cards.",
                 "instruction2":"",
                 "index": "4",
+                "isActive": "false",
                 "hasAction": "1"
               },
               { "shortName": "troublemaker",
@@ -41,6 +46,7 @@
                 "instruction":"TROUBLEMAKER, wake up. You may exchange cards between two other players.",
                 "instruction2":"",
                 "index": "5",
+                "isActive": "false",
                 "hasAction": "1"
               },
               { "shortName": "minion",
@@ -48,6 +54,7 @@
                 "instruction":"MINION, wake up. Werewolves, stick out your thumb so the Minion can see who you are.",
                 "instruction2":"Werewolves put your thumb away",
                 "index": "6",
+                "isActive": "false",
                 "hasAction": "1"
               },
               { "shortName": "drunk",
@@ -55,21 +62,25 @@
                 "instruction":"DRUNK, wake up and exchange your card with a card from the center.",
                 "instruction2":"",
                 "index": "7",
+                "isActive": "false",
                 "hasAction": "1"
               },
               { "shortName": "villager",
                 "charName": "Villager", 
                 "index": "8",
+                "isActive": "false",
                 "hasAction": "0"
               },
               { "shortName": "villager2",
                 "charName": "Villager", 
                 "index": "9",
+                "isActive": "false",
                 "hasAction": "0"
               },
               { "shortName": "villager3",
                 "charName": "Villager", 
                 "index": "10",
+                "isActive": "false",
                 "hasAction": "0"
               },
               { "shortName": "insomniac",
@@ -77,6 +88,7 @@
                 "instruction":"INSOMNIAC, wake up and look at your card.", 
                 "instruction2":"",
                 "index": "11",
+                "isActive": "false",
                 "hasAction": "1"
               },
               { "shortName": "robber",
@@ -84,6 +96,7 @@
                 "instruction":"ROBBER, wake up. You may exchange your card with another player's card, and then view your new card.",
                 "instruction2":"",
                 "index": "12",
+                "isActive": "false",
                 "hasAction": "1"
               }
   ]
