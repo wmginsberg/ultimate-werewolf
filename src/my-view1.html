@@ -66,15 +66,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <char-card-grid></char-card-grid>
     <div class="button-panel">
       <paper-button noink toggles class="timer">TIMER</paper-button>
-      <paper-button noink on-tap="startToggle" id="play">PLAY</paper-button>
+      <paper-button noink on-tap="startToggle" id="play">PLAY [[count]]</paper-button>
       <paper-icon-button noink on-tap="settingsToggle" id="settings" icon="settings"></paper-button>
     </div>
     <paper-dialog id="playDialog">
       <h2>Dialog Title</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p id="playText">Ready to play?</p>
       <div class="buttons">
         <paper-button noink dialog-dismiss>Cancel</paper-button>
-        <a href="/view3"><paper-button noink dialog-confirm autofocus>Save</paper-button></a>
+        <a href="/view3"><paper-button noink dialog-confirm autofocus>Yes</paper-button></a>
       </div>
     </paper-dialog>
 
@@ -92,8 +92,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     Polymer({
       is: 'my-view1',
+      properties: {
+        count: {
+          type: Number,
+          value: 0,
+          notify: true
+        }
+      },
       startToggle: function() {
         var dialog = this.$.playDialog;
+        var firebaseRef = firebase.app('ultimate-werewolf').database().ref('/characters/');
+        var chars = [];
+        firebaseRef.once('value', function(snapshot) {
+          // code to handle new value.
+         snapshot.forEach(function(childSnapshot) {
+            var childData = childSnapshot.val();
+            if(childData['isActive'] == true) {
+              chars.push(childData['charName']);
+            }
+           // this.$.playText.text = chars;
+          });
+        });     
+
         dialog.open();
       },
       settingsToggle: function() {
