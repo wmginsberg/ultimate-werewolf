@@ -49,7 +49,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: black;
       }
       paper-button.timer[active] {
-        background-color: #ccc;
+        background-color: #bbb;
         color: black;
       }
     </style>
@@ -59,8 +59,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <char-card-grid></char-card-grid>
     <div class="button-panel">
       <paper-button noink toggles class="timer">TIMER</paper-button>
-      <paper-button on-tap="gameStart" id="play">PLAY</paper-button>
-      <paper-icon-button id="settings" icon="settings"></paper-button>
+      <paper-button noink on-tap="startToggle" id="play">PLAY</paper-button>
+      <paper-icon-button noink on-tap="settingsToggle" id="settings" icon="settings"></paper-button>
 <!--     <paper-dialog id="actions">
       <h2>Dialog Title</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
@@ -71,9 +71,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </div>
     </paper-dialog> -->
     </div>
-    <paper-dialog id="dialog">
+    <paper-dialog id="playDialog">
       <h2>Dialog Title</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div class="buttons">
+        <paper-button noink dialog-dismiss>Cancel</paper-button>
+        <paper-button noink dialog-confirm autofocus>Save</paper-button>
+      </div>
+    </paper-dialog>
+
+    <paper-dialog id="settingsDialog">
+      <h2>Dialog Title</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <div class="buttons">
+        <paper-button noink dialog-dismiss>Cancel</paper-button>
+        <paper-button noink dialog-confirm autofocus>Save</paper-button>
+      </div>
     </paper-dialog>
 
   </template>
@@ -81,8 +94,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     Polymer({
       is: 'my-view1',
-      gameStart: function() {
-        var dialog = this.$.querySelector('#dialog');
+      startToggle: function() {
+        var dialog = this.$.playDialog;
+        dialog.open();
+      },
+      settingsToggle: function() {
+        var dialog = this.$.playDialog;
         dialog.open();
       }
     });
