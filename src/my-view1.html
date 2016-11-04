@@ -43,14 +43,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: auto;
         float: right;
       }
+      paper-button.timer {
+        background-color: white;
+        color: black;
+      }
+      paper-button.timer[active] {
+        background-color: #ccc;
+        color: black;
+      }
     </style>
 
     <h1>View One</h1>
 
     <char-card-grid></char-card-grid>
     <div class="button-panel">
-      <paper-button id="timer">TIMER</paper-button>
-      <paper-button id="play">PLAY</paper-button>
+      <paper-button noink toggles class="timer">TIMER</paper-button>
+      <paper-button on-tap="gameStart" id="play">PLAY</paper-button>
       <paper-icon-button id="settings" icon="settings"></paper-button>
     </div>
 
