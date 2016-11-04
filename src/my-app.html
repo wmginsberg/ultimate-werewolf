@@ -26,9 +26,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <style>
       :host {
-        --app-primary-color: #4285f4;
+        --app-primary-color: black;
         --app-secondary-color: black;
-
+        background-color: #a6a6a6;
         display: block;
       }
 
@@ -55,7 +55,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         line-height: 40px;
       }
-
+      #title {
+        text-align: center;
+      }
       .drawer-list a.iron-selected {
         color: black;
 
@@ -86,8 +88,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
-            <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div main-title>My App</div>
+            <div id="title" main-title>One Night Ultimate Werewolf</div>
           </app-toolbar>
         </app-header>
 

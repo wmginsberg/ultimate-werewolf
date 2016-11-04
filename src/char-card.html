@@ -13,8 +13,8 @@ a card to represent a character type
     <style>
       :host {
         display: block;
-        --background-color: blue;
-        --color: yellow;
+        --background-color: black;
+        --color: white;
       }
       paper-button {
         width: 100px;
@@ -22,7 +22,7 @@ a card to represent a character type
         padding: auto;
         background-color: var(--background-color);
         float: left;
-        margin: 10px;
+        margin: 3px;
       }
       h4 {
         text-align: center;
@@ -73,12 +73,12 @@ a card to represent a character type
       },
       swapColors: function() {
         if (this.isActive) {
-          this.customStyle['--color'] = 'yellow';
-          this.customStyle['--background-color'] = 'blue';
+          this.customStyle['--color'] = 'white';
+          this.customStyle['--background-color'] = 'black';
           Polymer.updateStyles();
         } else {
-          this.customStyle['--color'] = 'blue';
-          this.customStyle['--background-color'] = 'yellow';
+          this.customStyle['--color'] = 'black';
+          this.customStyle['--background-color'] = '#bbbbbb';
           Polymer.updateStyles();          
         }
       },
