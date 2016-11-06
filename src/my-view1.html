@@ -63,18 +63,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <char-card-grid></char-card-grid>
+    <div on-tap="countup"><char-card-grid></char-card-grid>
+    </div>
     <div class="button-panel">
       <paper-button noink toggles class="timer">TIMER</paper-button>
       <paper-button noink on-tap="startToggle" id="play">PLAY [[count]]</paper-button>
       <paper-icon-button noink on-tap="settingsToggle" id="settings" icon="settings"></paper-button>
     </div>
     <paper-dialog id="playDialog">
-      <h2>Dialog Title</h2>
+      <h2>Confirm Characters</h2>
       <p id="playText">Ready to play?</p>
       <div class="buttons">
         <paper-button noink dialog-dismiss>Cancel</paper-button>
-        <a href="/view3"><paper-button noink dialog-confirm autofocus>Yes</paper-button></a>
+        <a href="/view3"><paper-button raised elevation="0" noink dialog-confirm autofocus>Yes</paper-button></a>
       </div>
     </paper-dialog>
 
@@ -99,6 +100,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           notify: true
         }
       },
+      countup: function() {
+        var c = 0;
+        var playCount = this.$.play;
+        var firebaseRef = firebase.app('ultimate-werewolf').database().ref('/characters/');
+        firebaseRef.once('value', function(snapshot) {
+          // code to handle new value.
+         snapshot.forEach(function(childSnapshot) {
+            var childData = childSnapshot.val();
+            if(childData['isActive'] == true) {
+              c++;
+            }
+          });
+
+          playCount.innerHTML = "PLAY " + c;  
+        }); 
+      },
       startToggle: function() {
         var dialog = this.$.playDialog;
         var firebaseRef = firebase.app('ultimate-werewolf').database().ref('/characters/');
@@ -110,11 +127,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             if(childData['isActive'] == true) {
               chars.push(childData['charName']);
             }
-           // this.$.playText.text = chars;
           });
-        });     
 
-        dialog.open();
+          dialog.childNodes[3].innerText = chars.join(", ");
+          dialog.open();   
+        });  
       },
       settingsToggle: function() {
         var dialog = this.$.playDialog;
