@@ -66,19 +66,25 @@
                 "hasAction": "1"
               },
               { "shortName": "villager",
-                "charName": "Villager", 
+                "charName": "Villager",
+                "instruction":"", 
+                "instruction2":"",  
                 "index": "8",
                 "isActive": "false",
                 "hasAction": "0"
               },
               { "shortName": "villager2",
-                "charName": "Villager", 
+                "charName": "Villager",
+                "instruction":"", 
+                "instruction2":"",  
                 "index": "9",
                 "isActive": "false",
                 "hasAction": "0"
               },
               { "shortName": "villager3",
-                "charName": "Villager", 
+                "charName": "Villager",
+                "instruction":"", 
+                "instruction2":"", 
                 "index": "10",
                 "isActive": "false",
                 "hasAction": "0"

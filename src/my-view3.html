@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/voice-elements/src/voice-player.html">
 <link rel="import" href="shared-styles.html">
 
@@ -20,15 +21,123 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: #a6a6a6;
         padding: 10px;
       }
+      .char-div {
+        position: inline;
+      }
     </style>
     <h1> Hello </h1>
     <voice-player autoplay text="Ready to play?"></voice-player>
+    <p id="chars"></p>
+    <p id="instructions"></p>
+
+    <template is="dom-repeat" items="{{characters}}" as="char">
+        <p> {{char}} </p>
+        <span class="char-div">{{char}}</span>
+    </template>
+    <voice-player text="{{spoken_instructions}}" id="instruction_voice"></voice-player>
+    <paper-button on-click='playInstructions'>Instructions</paper-button>
+
     
   </template>
 
   <script>
     Polymer({
-      is: 'my-view3'
+      is: 'my-view3',
+
+      properties: {
+        characters: {
+          type: Array,
+          value: function() {
+              var char_p = this.$.chars;
+              var firebaseRef = firebase.app('ultimate-werewolf').database().ref('/characters/');
+              var chars = [];
+              firebaseRef.once('value', function(snapshot) {
+                // code to handle new value.
+               snapshot.forEach(function(childSnapshot) {
+                  var childData = childSnapshot.val();
+                  if(childData['isActive'] == true) {
+                    chars.push(childData['charName']);
+                  }
+                });
+
+                char_p.innerText = chars.join(", ");
+              });
+              return chars;  
+          },
+          notify: true
+        },
+        instructions: {
+          type: Array,
+          value: function() {
+            var instruction_p = this.$.instructions;
+              var firebaseRef = firebase.app('ultimate-werewolf').database().ref('/characters/');
+              var instructions = [];
+              firebaseRef.once('value', function(snapshot) {
+                // code to handle new value.
+               snapshot.forEach(function(childSnapshot) {
+                  var childData = childSnapshot.val();
+                  if(childData['isActive'] == true) {
+                    instructions.push(childData['charName']);
+                    instructions.push(childData['instruction']);
+                    if (childData['instruction2'] != '') {
+                      instructions.push(childData['instruction2']);
+                    }
+                  }
+
+                });
+
+                instruction_p.innerText = instructions.join(", ");
+              });
+              return instructions;  
+          },
+          notify: true
+        },
+        spoken_instructions_array: {
+          type: Array,
+          value: function() {
+            return [];
+          },
+          notify: true
+        },
+        spoken_instructions: {
+          type: String,
+          value: '',
+          notify: true
+        },
+      },
+      playInstructions: function() {
+        for (var i = 0; i < this.instructions.length-1; i++) {
+          // If we're looking at a word or instruction
+          console.log("============   " + i + "   ===========")
+          if (this.instructions[i] != '') {
+            // If It's a character
+
+            if (this.instructions[i].split(' ').length == 1) {
+              this.spoken_instructions_array.push("CHAR");
+
+              // If the instruction 1 is legit
+              if (this.instructions[i+1] != '') {
+                if (this.instructions[i+1].split(' ').length > 1) {
+                  this.spoken_instructions_array.push(this.instructions[i+1]);
+                  this.spoken_instructions += this.instructions[i+1] + " ";
+                }
+                // If the instruction 2 is legit
+                if (i+2 < this.instructions.length) {
+                  if (this.instructions[i+2] != '') {
+                    if (this.instructions[i+2].split(' ').length > 1) {
+                      this.spoken_instructions_array.push(this.instructions[i+1]);
+                      this.spoken_instructions += this.instructions[i+2] + " ";
+                      i+=1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        this.$.instruction_voice.speak();
+        console.log(this.spoken_instructions_array);
+      }
     });
   </script>
 </dom-module>
